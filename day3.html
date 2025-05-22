@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Day 3: Return to Nelson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: transparent;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 60px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    header a {
+      flex: 1;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 15px 0;
+      transition: background-color 0.3s;
+    }
+
+    header a:hover {
+      background-color: #005fa3;
+    }
+
+    section {
+      padding: 20px;
+      background: #fff;
+    }
+
+
+    #streetview-frame {
+      width: 100%;
+      height: 400px;
+      border: 0;
+      margin-top: 30px;
+    }
+
+    .timeline-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      overflow-x: auto;
+      padding: 20px 0;
+      margin-bottom: 40px;
+    }
+
+    .timeline-event {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 0 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      min-width: 220px;
+      position: relative;
+      text-align: center;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .timeline-event::after {
+      content: '→';
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      color: #0077cc;
+    }
+
+    .timeline-event:last-child::after {
+      display: none;
+    }
+
+    .event-time {
+      font-weight: bold;
+      color: #0077cc;
+      margin-bottom: 8px;
+    }
+
+    .timeline-event img {
+      max-width: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 5px #999;
+      margin-top: 10px;
+    }
+
+    .nav {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+
+    .nav a {
+      padding: 12px 24px;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="day1.html">Day 1</a>
+    <a href="day2.html">Day 2</a>
+    <a href="day3.html">Day 3</a>
+  </header>
+
+  <section>
+    <iframe id="streetview-frame" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- MAP ABOVE TIMELINE -->
+
+    <!-- TIMELINE EVENTS -->
+    <div class="timeline-container">
+      <div class="timeline-event" data-lat="-45.037704" data-lng="168.659836">
+        <div class="event-time">10:00 AM</div>
+        <p>🚲 Cycling through Queen's Gardens</p>
+        <div style="width: 350px; height: 30px; margin: 0 auto;"></div>
+        <div class="tenor-gif-embed" data-postid="12104418892372217034" data-share-method="host" data-aspect-ratio="1.33155" data-width="100%"><a href="https://tenor.com/view/mr-bean-holiday-mister-bean-holiday-mr-bean-holiday-movie-mister-bean-holiday-movie-mr-bean-bike-gif-12104418892372217034">Mr Bean Holiday Mister Bean Holiday GIF</a>from <a href="https://tenor.com/search/mr+bean+holiday-gifs">Mr Bean Holiday GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+      </div>
+
+      <div class="timeline-event" data-lat="-40.5030" data-lng="172.6791">
+        <div class="event-time">1:00 PM</div>
+        <p>🌅 Sand Spit</p>
+        <div style="width: 350px; height: 30px; margin: 0 auto;"></div>
+        <div class="tenor-gif-embed" data-postid="7185595216195054382" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/rock-one-eyebrow-raised-rock-staring-the-rock-gif-7185595216195054382">Rock One Eyebrow Raised Rock Staring GIF</a>from <a href="https://tenor.com/search/rock+one+eyebrow+raised-gifs">Rock One Eyebrow Raised GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+      </div>
+
+      <div class="timeline-event" data-lat="-40.5030" data-lng="172.6791">
+        <div class="event-time">3:00 PM</div>
+        <p>🌊 Erosion</p>
+        <div style="width: 350px; height: 30px; margin: 0 auto;"></div>
+        <div class="tenor-gif-embed" data-postid="3437649" data-share-method="host" data-aspect-ratio="1.3758" data-width="100%"><a href="https://tenor.com/view/homer-simpson-im-gone-bush-the-simpsons-gif-3437649">Homer Disappearing GIF</a>from <a href="https://tenor.com/search/homer+simpson-gifs">Homer Simpson GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+      </div>
+
+      <div class="timeline-event" data-lat="-41.2750267" data-lng="173.2835702">
+        <div class="event-time">6:30 PM</div>
+        <p>🍴 Dinner at Hawker House</p>
+        <div style="width: 350px; height: 30px; margin: 0 auto;"></div>
+        <div class="tenor-gif-embed" data-postid="11704022920869605379" data-share-method="host" data-aspect-ratio="1.52761" data-width="100%"><a href="https://tenor.com/view/kim-dfeng-guddu-guddu-mogger-mogger-pookie-gif-11704022920869605379">Kim Dfeng Guddu GIF</a>from <a href="https://tenor.com/search/kim+dfeng-gifs">Kim Dfeng GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+      </div>
+    </div>
+
+    <!-- STREET VIEW -->
+
+  </section>
+
+  <div class="nav">
+    <p>🎉 Thanks for exploring Nelson with us!</p>
+    <a href="index.html">🏠 Back to Start</a>
+  </div>
+
+  <script>
+    function getStreetViewSrc(lat, lng) {
+      return `https://www.google.com/maps?q=&layer=c&cbll=${lat},${lng}&cbp=11,0,0,0,0&z=17&output=svembed`;
+    }
+
+    document.querySelectorAll('.timeline-event').forEach(event => {
+      event.addEventListener('click', function () {
+        const lat = this.getAttribute('data-lat');
+        const lng = this.getAttribute('data-lng');
+        
+        // Update Street View iframe source
+        document.getElementById('streetview-frame').src = getStreetViewSrc(lat, lng);
+        
+        // Highlight the active event
+        document.querySelectorAll('.timeline-event').forEach(e => e.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
